@@ -34,6 +34,12 @@ HashTable.prototype.insert = function(k, v) {
     // Double limit
     this.resize(this._limit * 2);
   }
+
+   // If tupleCount < 25% of limit
+   if (this._tupleCount < this._limit * 0.25) {
+    // Halve limit
+    this.resize(this._limit / 2);
+  }
 };
 
 HashTable.prototype.resize = function(newLimit) {
